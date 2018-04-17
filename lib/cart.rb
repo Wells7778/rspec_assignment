@@ -10,17 +10,7 @@ class Cart
     total = 0
 
     while @ordered_items.size > 0
-      if @ordered_items.size == 2
-        total += 2 * PRICE * 0.95
-      elsif @ordered_items.size == 3
-        total += 3 * PRICE * 0.9
-      elsif @ordered_items.size == 4
-        total += 4 * PRICE * 0.85
-      elsif @ordered_items.size == 5
-        total += 5 * PRICE * 0.8
-      else
-        total += PRICE
-      end
+      total += @ordered_items.size * PRICE * (1 - ((@ordered_items.size - 1) * 0.05))
       @ordered_items = @ordered_items.map{ |i| i -= 1 }
       @ordered_items = @ordered_items.delete_if{ |i| i == 0 }
     end
