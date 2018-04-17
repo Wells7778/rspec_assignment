@@ -41,4 +41,27 @@ describe Cart do
     end
 
   end
+
+  context '第三種情境，打 10% 折扣' do
+    it '第一集買1本，第二集買1本，第三集買1本' do
+      @cart.add({ "1st": 1, "2nd": 1, "3rd": 1, "4th": 0, "5th": 0 })
+      expect(@cart.calculate).to eq(270)
+    end
+
+    it '第一集買2本，第二集買2本，第三集買2本' do
+      @cart.add({ "1st": 2, "2nd": 2, "3rd": 2, "4th": 0, "5th": 0 })
+      expect(@cart.calculate).to eq(540)
+    end
+
+    it '第一集買1本，第二集買1本，第三集買2本' do
+      @cart.add({ "1st": 1, "2nd": 1, "3rd": 2, "4th": 0, "5th": 0 })
+      expect(@cart.calculate).to eq(370)
+    end
+
+    it '第一集買2本，第二集買2本，第三集買3本' do
+      @cart.add({ "1st": 2, "2nd": 2, "3rd": 3, "4th": 0, "5th": 0 })
+      expect(@cart.calculate).to eq(640)
+    end
+
+  end
 end
