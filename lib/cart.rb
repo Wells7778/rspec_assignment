@@ -14,6 +14,8 @@ class Cart
         total += 2 * PRICE * 0.95
       elsif @ordered_items.size == 3
         total += 3 * PRICE * 0.9
+      elsif @ordered_items.size == 4
+        total += 4 * PRICE * 0.85
       else
         total += PRICE
       end
